@@ -1,95 +1,32 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+"use client"
+import { Box, Button, Center, Heading, Link, useColorModeValue } from "@chakra-ui/react";
+import NextLink from "next/link";
 
 export default function Home() {
+  const bgColor = useColorModeValue("white", "brand.900");
+  const textColor = useColorModeValue("brand.500", "brand.100");
+
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
+    <Box display={"flex"} flexDirection={"column"} bg={bgColor} h="full" w="100%">
+      <Heading color={textColor} textAlign="center" mb={8}>
+        Homepage
+      </Heading>
+      <Center mt="90">
+        <Box display="flex" gap={4} flexDirection="column" alignItems="center">
+          <Box display="flex">
+            <Link as={NextLink} href={"/menu"} variant="blur" fontWeight="bold" mr={4}>
+              Menu
+            </Link>
+            <Link as={NextLink} href={"/favorites"} variant="blur" fontWeight="bold" mr={4}>
+              Favorites
+            </Link>
+          </Box>
+          <Link as={NextLink} href={"/random-meal"} variant="blur" fontWeight="bold" mr={4}>
+            Random Meal
+          </Link>
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+        </Box>
+      </Center>
+    </Box>
   );
 }
